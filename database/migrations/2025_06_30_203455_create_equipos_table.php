@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('equipos', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
+            $table->string('description')->nullable();
+            $table->string('urlimage')->nullable();
+            $table->foreignId('serie_id')->constrained('series')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('status')->default;(1); // 1: activo, 0: inactivo
             $table->timestamps();
         });
     }
