@@ -45,4 +45,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    /**
+     * Get the equipos associated with the user.
+     */
+    public function equipos()
+    {
+        return $this->hasMany(Equipo::class);
+}
 }
